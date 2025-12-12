@@ -40,31 +40,34 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Link href="/students">
-            <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-800">
-                  Mahasiswa
-                </h2>
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <svg
-                    className="w-6 h-6 text-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                    />
-                  </svg>
+          {/* Mahasiswa - Admin and Lecturer */}
+          {(user.role === 'admin' || user.role === 'lecturer') && (
+            <Link href="/students">
+              <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-semibold text-gray-800">
+                    Mahasiswa
+                  </h2>
+                  <div className="bg-blue-100 p-3 rounded-full">
+                    <svg
+                      className="w-6 h-6 text-blue-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                      />
+                    </svg>
+                  </div>
                 </div>
+                <p className="text-gray-600 text-sm">Kelola data mahasiswa</p>
               </div>
-              <p className="text-gray-600 text-sm">Kelola data mahasiswa</p>
-            </div>
-          </Link>
+            </Link>
+          )}
 
           <Link href="/courses">
             <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
@@ -94,40 +97,45 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/enrollments">
-            <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-800">
-                  Enrollment
-                </h2>
-                <div className="bg-purple-100 p-3 rounded-full">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                    />
-                  </svg>
+          {/* Enrollment - Admin and Students */}
+          {(user.role === 'admin' || user.role === 'student') && (
+            <Link href="/enrollments">
+              <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-semibold text-gray-800">
+                    Enrollment
+                  </h2>
+                  <div className="bg-purple-100 p-3 rounded-full">
+                    <svg
+                      className="w-6 h-6 text-purple-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                      />
+                    </svg>
+                  </div>
                 </div>
+                <p className="text-gray-600 text-sm">Pendaftaran mata kuliah</p>
               </div>
-              <p className="text-gray-600 text-sm">Pendaftaran mata kuliah</p>
-            </div>
-          </Link>
-
-          <Link href="/grades">
-            <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-800">Nilai</h2>
-                <div className="bg-yellow-100 p-3 rounded-full">
-                  <svg
-                    className="w-6 h-6 text-yellow-600"
-                    fill="none"
+            <Link href="/grades">
+              <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-semibold text-gray-800">Nilai</h2>
+                  <div className="bg-yellow-100 p-3 rounded-full">
+                    <svg
+                      className="w-6 h-6 text-yellow-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                      fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -141,10 +149,40 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-600 text-sm">
-                Input dan lihat nilai mahasiswa
-              </p>
-            </div>
-          </Link>
+                Input dan kelola nilai
+                </p>
+              </div>
+            </Link>
+          )}
+
+          {/* Transkrip - Students */}
+          {user.role === 'student' && (
+            <Link href="/grades/transcript">
+              <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-semibold text-gray-800">Transkrip</h2>
+                  <div className="bg-yellow-100 p-3 rounded-full">
+                    <svg
+                      className="w-6 h-6 text-yellow-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm">
+                  Lihat transkrip dan IPK
+                </p>
+              </div>
+            </Link>
+          )}
         </div>
       </div>
     </div>
