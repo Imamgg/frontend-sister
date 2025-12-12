@@ -1,8 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SIAKAD Frontend
+
+Frontend aplikasi SIAKAD menggunakan Next.js 16 dengan React 19 dan TypeScript.
+
+## Fitur
+
+- ✅ Authentication (Login & Register)
+- ✅ Manajemen Mahasiswa (CRUD)
+- ✅ Manajemen Mata Kuliah
+- ✅ Enrollment Mata Kuliah
+- ✅ Input dan Lihat Nilai
+- ✅ Transkrip Nilai dengan IPK
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **UI**: React 19 + Tailwind CSS
+- **HTTP Client**: Axios
+- **State Management**: React Context API
+- **Authentication**: JWT Token (localStorage)
+
+## Instalasi
+
+```bash
+# Install dependencies
+npm install
+```
+
+## Konfigurasi
+
+Buat file `.env.local`:
+
+```env
+NEXT_PUBLIC_API_URL=http://192.168.10.11:3000
+```
 
 ## Getting Started
 
-First, run the development server:
+Run the development server:
 
 ```bash
 npm run dev
